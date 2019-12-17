@@ -1,1 +1,1 @@
-"# waiting-tickets" 
+# waiting-tickets
