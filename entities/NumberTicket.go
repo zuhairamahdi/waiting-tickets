@@ -12,6 +12,6 @@ type NumberTicket struct {
 	ID       int `gorm:"unique;AUTO_INCREMENT"`
 	Number   int
 	Date     time.Time
-	Used     bool
+	Used     bool `gorm:"default:false"`
 	Category Category
 }
