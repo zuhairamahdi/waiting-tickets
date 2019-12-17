@@ -1,6 +1,6 @@
 package category
 
-import "github.com/zuhairamahdi/gin-test/entities"
+import "github.com/zuhairamahdi/waiting-tickets/entities"
 
 //InsertCategory to Insert new Category
 func InsertCategory(category entities.Category) {
@@ -17,7 +17,7 @@ func UpdateCategory(id int, newName string) {
 	//TODO Update category here
 }
 
-//UpdateCategoryWithObject
+//UpdateCategoryWithObject function
 func UpdateCategoryWithObject(id int, category entities.Category) {
 	//TODO Update category using category type object
 }
