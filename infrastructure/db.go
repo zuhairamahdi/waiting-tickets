@@ -5,18 +5,20 @@ import (
 	"path"
 
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/jinzhu/gorm/dialects/postgres" // use postgres dialact
 
 	"os"
 )
 
+//Database struct
 type Database struct {
 	*gorm.DB
 }
 
+//DB global variable
 var DB *gorm.DB
 
-// Opening a database and save the reference to `Database` struct.
+//OpenDbConnection Opening a database and save the reference to `Database` struct.
 func OpenDbConnection() *gorm.DB {
 	dialect := os.Getenv("DB_DIALECT")
 	username := os.Getenv("DB_USER")
@@ -25,13 +27,9 @@ func OpenDbConnection() *gorm.DB {
 	host := os.Getenv("DB_HOST")
 	var db *gorm.DB
 	var err error
-	if dialect == "sqlite3" {
-		db, err = gorm.Open("sqlite3", path.Join(".", "app.db"))
-	} else {
-		// db, err := gorm.Open("mysql", "root:root@localhost/igo_api_shop_gonc?charset=utf8")
-		databaseUrl := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable ", host, username, password, dbName)
-		db, err = gorm.Open(dialect, databaseUrl)
-	}
+	// db, err := gorm.Open("mysql", "root:root@localhost/igo_api_shop_gonc?charset=utf8")
+	databaseURL := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable ", host, username, password, dbName)
+	db, err = gorm.Open(dialect, databaseUrl)
 
 	if err != nil {
 		fmt.Println("db err: ", err)
