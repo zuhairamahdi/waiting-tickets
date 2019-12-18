@@ -29,7 +29,7 @@ func OpenDbConnection() *gorm.DB {
 	var err error
 	// db, err := gorm.Open("mysql", "root:root@localhost/igo_api_shop_gonc?charset=utf8")
 	databaseURL := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable ", host, username, password, dbName)
-	db, err = gorm.Open(dialect, databaseUrl)
+	db, err = gorm.Open(dialect, databaseURL)
 
 	if err != nil {
 		fmt.Println("db err: ", err)
