@@ -2,7 +2,6 @@ package infrastructure
 
 import (
 	"fmt"
-	"path"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres" // use postgres dialact
@@ -40,13 +39,6 @@ func OpenDbConnection() *gorm.DB {
 	db.LogMode(true)
 	DB = db
 	return DB
-}
-
-//RemoveDb Delete the database after running testing cases.
-func RemoveDb(db *gorm.DB) error {
-	db.Close()
-	err := os.Remove(path.Join(".", "app.db"))
-	return err
 }
 
 //GetDb Using this function to get a connection, you can create your connection pool here.
